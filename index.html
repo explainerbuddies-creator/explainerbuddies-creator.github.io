@@ -7,7 +7,7 @@
 <meta name="description" content="Bhagyasree Pulparambil, senior video producer and journalist at Mathrubhumi.com.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Malayalam:wght@400;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
 /* Layout: a broadcast monitor opens the page (photo, lower-third name strap, timecode),
    then a light "rundown" of work below it, read top to bottom like a run sheet. */
@@ -228,6 +228,38 @@ section.block { padding-block: 88px 8px; }
   .rec::before { animation: none; }
   .reel-media img { transition: none; }
 }
+
+/* ---------- Videos ---------- */
+.ml { font-family: "Noto Sans Malayalam", var(--f-body); }
+.yt { position: relative; display: block; width: 100%; aspect-ratio: 16/9; max-width: 100%; padding: 0; border: 0; border-radius: 4px; overflow: hidden; background: #0A0D10; cursor: pointer; }
+.yt img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease, opacity .2s; }
+.yt:hover img { transform: scale(1.03); opacity: .9; }
+.yt .play { position: absolute; left: 50%; top: 50%; width: 64px; height: 44px; margin: -22px 0 0 -32px; border-radius: 12px; background: rgba(9,12,15,.78); display: grid; place-items: center; transition: background .2s; }
+.yt .play::before { content: ""; border-style: solid; border-width: 10px 0 10px 17px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+.yt:hover .play, .yt:focus-visible .play { background: #D23A2A; }
+.yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.reel-media .yt { border-radius: 0; height: 100%; }
+.vfilters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.vchip { font: 600 .78rem/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 9px 12px; border-radius: 2px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.vchip span { color: var(--muted); margin-left: 6px; font-weight: 500; }
+.vchip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.vchip[aria-pressed="true"] span { color: inherit; opacity: .7; }
+.vgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 24px; }
+.vcard { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.vmeta { display: flex; align-items: center; gap: 10px; font: 500 .72rem/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-variant-numeric: tabular-nums; }
+.vmeta .tag { font-size: .62rem; }
+.vcard h3 { margin: 0; font-size: 1.02rem; font-weight: 700; line-height: 1.5; text-wrap: pretty; }
+.vcard p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.vlinks { display: flex; flex-wrap: wrap; gap: 16px; font-size: .82rem; font-weight: 600; }
+.vlinks a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.vlinks a:hover { border-color: var(--accent); }
+.vmore { margin-top: 40px; display: flex; justify-content: center; }
+.vmore button { font: 600 .9rem/1 var(--f-body); padding: 13px 22px; border-radius: 3px; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+.vmore button:hover { background: var(--ink); color: var(--bg); }
+.vcount { font: 500 .78rem var(--f-mono); color: var(--muted); margin: 0 0 16px; }
+@media (max-width: 960px) { .vgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .vgrid { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .yt img { transition: none; } }
 </style>
 </head>
 <body>
@@ -249,7 +281,7 @@ section.block { padding-block: 88px 8px; }
         </div>
         <p class="lede">I lead video production end to end: <strong>research, scripting, presenting, voice-over and direction</strong>. At Mathrubhumi.com since 2017, I make explainers, documentaries and long-form interviews, and host and produce the interview series <strong>Service Story</strong> and <strong>Behind The Success</strong>.</p>
         <div class="cta">
-          <a class="btn btn-primary" href="#work">See my work</a>
+          <a class="btn btn-primary" href="#videos">Watch my videos</a>
           <a class="btn btn-ghost" href="#contact">Get in touch</a>
         </div>
       </div>
@@ -276,30 +308,42 @@ section.block { padding-block: 88px 8px; }
       <div class="sec-head"><h2>Selected work</h2><span class="slug">Career highlights</span></div>
       <div class="reels">
         <article class="reel">
-          <div class="reel-media"><img src="images/urul-kadannavar.jpg" alt="Thumbnail for Urul Kadannavar, a documentary on the Wayanad landslide" loading="lazy"><span class="dur">1:42:00</span></div>
+          <div class="reel-media"><button class="yt" type="button" data-yt="SeD9tr0X9v8" aria-label="Play: Thumbnail for Urul Kadannavar, a documentary on the Wayanad landslide"><img src="images/urul-kadannavar.jpg" alt="Thumbnail for Urul Kadannavar, a documentary on the Wayanad landslide" loading="lazy"><span class="play" aria-hidden="true"></span></button><span class="dur">1:42:00</span></div>
           <div class="tags"><span class="tag key">Documentary</span><span class="tag">Mathrubhumi Originals</span></div>
           <div><h3>Urul Kadannavar</h3><p class="role">Director, producer and voice-over</p></div>
           <p>An investigative documentary on the rehabilitation of the Wayanad landslide survivors, one year after the Mundakkai–Chooralmala disaster: what was promised, what has been delivered, and where their lives stand now.</p>
         </article>
         <article class="reel">
-          <div class="reel-media"><img src="images/sarath-manuel.jpg" alt="Thumbnail for the Service Story interview with Capt. Sarath Manuel" loading="lazy"></div>
+          <div class="reel-media"><button class="yt" type="button" data-yt="giNp-f7Dj4Y" aria-label="Play: Thumbnail for the Service Story interview with Capt. Sarath Manuel"><img src="images/sarath-manuel.jpg" alt="Thumbnail for the Service Story interview with Capt. Sarath Manuel" loading="lazy"><span class="play" aria-hidden="true"></span></button></div>
           <div class="tags"><span class="tag key">Interview series</span><span class="tag">Service Story</span></div>
           <div><h3>Capt. Sarath Manuel, IndiGo pilot and trainer</h3><p class="role">Host and producer</p></div>
           <p>An IndiGo pilot and trainer looks back on more than a decade in the cockpit and analyses the issues being debated in Indian aviation.</p>
         </article>
         <article class="reel">
-          <div class="reel-media"><img src="images/arun-zachariah.jpg" alt="Thumbnail for the interview with Dr Arun Zachariah" loading="lazy"></div>
+          <div class="reel-media"><button class="yt" type="button" data-yt="7ibTYtqRres" aria-label="Play: Thumbnail for the interview with Dr Arun Zachariah"><img src="images/arun-zachariah.jpg" alt="Thumbnail for the interview with Dr Arun Zachariah" loading="lazy"><span class="play" aria-hidden="true"></span></button></div>
           <div class="tags"><span class="tag key">Interview series</span><span class="tag">Profiles Unscripted</span><span class="tag">Multi-part</span></div>
           <div><h3>Dr Arun Zachariah, wildlife veterinarian</h3><p class="role">Interviewer</p></div>
           <p>Kerala's chief forest veterinary officer on tiger and elephant conflict, wildlife rescues and the risks of his work, across a multi-part conversation.</p>
         </article>
         <article class="reel">
-          <div class="reel-media"><img src="images/rishiraj-singh.jpg" alt="Thumbnail for the Service Story interview with Rishiraj Singh IPS" loading="lazy"></div>
+          <div class="reel-media"><button class="yt" type="button" data-yt="kALIG4_hiOw" aria-label="Play: Thumbnail for the Service Story interview with Rishiraj Singh IPS"><img src="images/rishiraj-singh.jpg" alt="Thumbnail for the Service Story interview with Rishiraj Singh IPS" loading="lazy"><span class="play" aria-hidden="true"></span></button></div>
           <div class="tags"><span class="tag key">Interview series</span><span class="tag">Service Story</span></div>
           <div><h3>Rishiraj Singh IPS</h3><p class="role">Host and producer</p></div>
           <p>Four decades in Kerala's police service, his career choices, and how drugs now reach homes through online orders and food delivery.</p>
         </article>
       </div>
+    </div>
+  </section>
+
+
+  <section class="block" id="videos">
+    <div class="wrap">
+      <div class="sec-head"><h2>Videos</h2><span class="slug" id="vtotal">From Mathrubhumi</span></div>
+      <div class="vfilters" id="vfilters" role="group" aria-label="Filter videos"></div>
+      <p class="vcount" id="vcount" aria-live="polite"></p>
+      <div class="vgrid" id="vgrid"></div>
+      <div class="vmore"><button type="button" id="vmore" hidden>Show more videos</button></div>
+      <noscript><p>Turn on JavaScript to browse the videos, or see them on <a href="https://www.mathrubhumi.com/topics/person/bhagyasree_pulparambil">Mathrubhumi</a>.</p></noscript>
     </div>
   </section>
 
@@ -407,5 +451,66 @@ section.block { padding-block: 88px 8px; }
 })();
 </script>
 
+
+<script>
+(function () {
+  function esc(s) { return String(s || '').replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function play(btn) {
+    var id = btn.getAttribute('data-yt');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+    f.title = btn.getAttribute('aria-label') || 'YouTube video';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    var holder = document.createElement('div');
+    holder.className = 'yt';
+    holder.appendChild(f);
+    btn.replaceWith(holder);
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('button.yt[data-yt]');
+    if (b) play(b);
+  });
+
+  var grid = document.getElementById('vgrid'), filters = document.getElementById('vfilters'),
+      more = document.getElementById('vmore'), count = document.getElementById('vcount');
+  var PAGE = 12, all = [], cat = 'All', shown = PAGE;
+  var ORDER = ['All', 'Explainers', 'Interviews', 'News Plus', 'Originals', 'Specials', 'News', 'Features'];
+  function fmt(d) { if (!d) return ''; var x = new Date(d + 'T00:00:00'); return x.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }); }
+  function list() { return cat === 'All' ? all : all.filter(function (v) { return v.cat === cat; }); }
+  function render() {
+    var items = list();
+    grid.innerHTML = items.slice(0, shown).map(function (v) {
+      return '<article class="vcard">' +
+        '<button class="yt" type="button" data-yt="' + esc(v.id) + '" aria-label="Play: ' + esc(v.title) + '">' +
+        '<img src="https://i.ytimg.com/vi/' + esc(v.id) + '/hqdefault.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></button>' +
+        '<div class="vmeta"><span class="tag">' + esc(v.cat) + '</span><span>' + fmt(v.date) + '</span></div>' +
+        '<h3 class="ml">' + esc(v.title) + '</h3>' +
+        (v.desc ? '<p class="ml">' + esc(v.desc) + '</p>' : '') +
+        '<div class="vlinks"><a href="' + esc(v.url) + '" target="_blank" rel="noopener">Read on Mathrubhumi</a>' +
+        '<a href="https://www.youtube.com/watch?v=' + esc(v.id) + '" target="_blank" rel="noopener">Watch on YouTube</a></div>' +
+        '</article>';
+    }).join('');
+    more.hidden = shown >= items.length;
+    count.textContent = 'Showing ' + Math.min(shown, items.length) + ' of ' + items.length + (cat === 'All' ? ' videos' : ' ' + cat.toLowerCase());
+  }
+  function chips() {
+    var n = {}; all.forEach(function (v) { n[v.cat] = (n[v.cat] || 0) + 1; }); n.All = all.length;
+    filters.innerHTML = ORDER.filter(function (c) { return n[c]; }).map(function (c) {
+      return '<button class="vchip" type="button" data-cat="' + c + '" aria-pressed="' + (c === cat) + '">' + c + '<span>' + n[c] + '</span></button>';
+    }).join('');
+  }
+  filters.addEventListener('click', function (e) {
+    var b = e.target.closest('.vchip'); if (!b) return;
+    cat = b.getAttribute('data-cat'); shown = PAGE; chips(); render();
+  });
+  more.addEventListener('click', function () { shown += PAGE; render(); });
+  fetch('videos.json').then(function (r) { return r.json(); }).then(function (data) {
+    all = data; document.getElementById('vtotal').textContent = data.length + ' videos from Mathrubhumi'; chips(); render();
+  }).catch(function () {
+    count.innerHTML = 'The video list could not load. See all videos on <a href="https://www.mathrubhumi.com/topics/person/bhagyasree_pulparambil" target="_blank" rel="noopener">Mathrubhumi</a>.';
+  });
+})();
+</script>
 </body>
 </html>
